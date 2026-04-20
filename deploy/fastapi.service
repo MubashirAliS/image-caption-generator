@@ -1,0 +1,16 @@
+[Unit]
+Description=Caption App FastAPI (uvicorn)
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/caption-app/backend
+Environment="PATH=/home/ubuntu/caption-app/venv/bin"
+ExecStart=/home/ubuntu/caption-app/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers
+Restart=always
+RestartSec=5s
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
