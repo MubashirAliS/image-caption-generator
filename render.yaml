@@ -11,6 +11,8 @@ services:
         sync: false
       - key: LOG_LEVEL
         value: INFO
+      - key: PYTHON_VERSION
+        value: 3.11.6
 
   # Frontend Vite Static Site
   - type: web
