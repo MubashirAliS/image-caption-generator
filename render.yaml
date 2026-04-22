@@ -3,22 +3,21 @@ services:
   - type: web
     name: image-caption-backend
     env: python
+    rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
-    rootDir: backend
     envVars:
       - key: CORS_ORIGINS
-        sync: false # Set this to your frontend URL after deployment
+        sync: false
       - key: LOG_LEVEL
         value: INFO
 
-  # Frontend Vite Service
-  - type: web
+  # Frontend Vite Static Site
+  - type: static_site
     name: image-caption-frontend
-    env: static
+    rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    rootDir: frontend
     envVars:
       - key: VITE_API_BASE
-        sync: false # Set this to your backend URL + /api after deployment
+        sync: false
