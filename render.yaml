@@ -5,7 +5,7 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
-    rootContext: backend
+    rootDir: backend
     envVars:
       - key: CORS_ORIGINS
         sync: false # Set this to your frontend URL after deployment
@@ -17,8 +17,8 @@ services:
     name: image-caption-frontend
     env: static
     buildCommand: npm install && npm run build
-    publishPath: dist
-    rootContext: frontend
+    staticPublishPath: dist
+    rootDir: frontend
     envVars:
       - key: VITE_API_BASE
         sync: false # Set this to your backend URL + /api after deployment
