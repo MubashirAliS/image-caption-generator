@@ -13,8 +13,9 @@ services:
         value: INFO
 
   # Frontend Vite Static Site
-  - type: static_site
+  - type: web
     name: image-caption-frontend
+    env: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
