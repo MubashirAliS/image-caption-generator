@@ -13,7 +13,7 @@ services:
         value: INFO
 
   # Frontend Vite Service
-  - type: static
+  - type: web
     name: image-caption-frontend
     env: static
     buildCommand: npm install && npm run build
